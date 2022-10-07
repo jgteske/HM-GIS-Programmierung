@@ -6,11 +6,18 @@ Das Ziel der Veranstaltung ist es, eigene Skripte zur Prozessierung von Geodaten
 Wer den eigenen Notebook verwenden will, sollte die aktuelle Version von QGIS installieren. QGIS hat bereits eine interne Laufzeitumgebung für Python, so dass Python für unsere Zwecke nicht extra installiert werden muss.
 Vorkenntnisse in Python sind nicht nötig. Grundkenntnisse in QGIS sind aber hilfreich.
 
-## Semester (WS 2022/23)
-
 ## Clone Repository
 
 `git clone git@github.com:jgteske/HM-GIS-Programmierung.git`
+
+## Ziele Semester (WS 2022/23)
+- Einführung Python
+- Python in QGIS
+- Vektorlayer und Rasterlayer mit Python bearbeiten
+- Erzeugen neuer Daten in QGIS mit Python
+- Skripte für QGIS in Python
+- Eigene Plugins mit Python für QGIS erstellen
+
 
 ## Code Übungen
 
