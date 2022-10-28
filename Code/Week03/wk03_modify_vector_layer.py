@@ -5,6 +5,9 @@
 # https://docs.qgis.org/2.18/en/docs/user_manual/plugins/python_console.html
 # Code documentation:
 # https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/index.html
+#
+# IMPORTANT:
+# iface variable, which is an instance of QgsInterface!
 
 # path to files
 uri="/vsizip/C:/Users/johan/OneDrive/Privat/Uni/Master/02_Semester/GP/Uebung/Week02/natural_earth_vector.gpkg.zip/packages/natural_earth_vector.gpkg|layername=ne_10m_admin_0_countries"
