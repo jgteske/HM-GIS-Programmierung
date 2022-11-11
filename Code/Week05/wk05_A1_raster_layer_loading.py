@@ -93,7 +93,13 @@ printInfo(tifLayer)
 #
 # WMS
 #
-urlWMS = "https://sedac.ciesin.columbia.edu/geoserver/ows?SERVICE=WMS&REQUEST=GetMap&VERSION=1.3.0&layers=ipcc:ipcc-synthetic-vulnerability-climate-2005-2050-2100&format=image/png&crs=EPSG:4326&style=ipcc-synthetic-vulnerability-climate-2005-2050-2100:extreme-events-enhance-adaptive-a2550-2100-5.5C-annual&WIDTH=1500&HEIGHT=800&BBOX=-55.79166793823248,-179.99999966763818,83.66666412494413,179.99999966763812"
+# urlWMS = "https://sedac.ciesin.columbia.edu/geoserver/ows?SERVICE=WMS&REQUEST=GetMap&VERSION=1.3.0&layers=ipcc:ipcc-synthetic-vulnerability-climate-2005-2050-2100&format=image/png&crs=EPSG:4326&style=ipcc-synthetic-vulnerability-climate-2005-2050-2100:extreme-events-enhance-adaptive-a2550-2100-5.5C-annual&WIDTH=1500&HEIGHT=800&BBOX=-55.79166793823248,-179.99999966763818,83.66666412494413,179.99999966763812"
+bbox = {
+    "LU-Lat": -55.79166793823248,  # links unten Latitude
+    "LU-Lon": -179.99999966763818,  # links unten Longitude
+    "RO-Lat": 83.66666412494413,  # rechts oben Latitude
+    "RO-Lon": 179.99999966763812,  # rechts oben Longitude
+}
 WMSSettings = {
     "BASEURL": "https://sedac.ciesin.columbia.edu/geoserver/ows?",
     "SERVICE": "WMS",
@@ -106,15 +112,30 @@ WMSSettings = {
     "WIDTH": 1500,
     "HEIGHT": 800,
     "BBOX": {
-        "LU-Lat": -55.79166793823248,  # links unten Latitude
-        "LU-Lon": -179.99999966763818,  # links unten Longitude
-        "RO-Lat": 83.66666412494413,  # rechts oben Latitude
-        "RO-Lon": 179.99999966763812,  # rechts oben Longitude
+        "LU-Lat": bbox.get("LU-Lat"),
+        "LU-Lon": bbox.get("LU-Lon"),
+        "RO-Lat": bbox.get("RO-Lat"),
+        "RO-Lon": bbox.get("RO-Lon"),
     },
 }
-urlDynamicWMS = f'{WMSSettings["BASEURL"]}SERVICE={WMSSettings["SERVICE"]}&REQUEST={WMSSettings["REQUEST"]}&VERSION={WMSSettings["VERSION"]}&LAYERS={WMSSettings["LAYERS"]}&FORMAT={WMSSettings["FORMAT"]}&CRS={WMSSettings["CRS"]}&STYLE={WMSSettings["STYLE"]}&WIDTH={WMSSettings["WIDTH"]}&HEIGHT={WMSSettings["HEIGHT"]}&BBOX={WMSSettings["BBOX"]["LU-Lat"]},{WMSSettings["BBOX"]["LU-Lon"]},{WMSSettings["BBOX"]["RO-Lat"]},{WMSSettings["BBOX"]["RO-Lon"]}'
-urlSplitDynamicWMS = f'layers={WMSSettings["LAYERS"]}&format={WMSSettings["FORMAT"]}&crs={WMSSettings["CRS"]}&url={WMSSettings["BASEURL"]}service={WMSSettings["SERVICE"]}'
 
+WMSurllibSettings = {
+    "service": "WMS",
+    "version": "1.3.0",
+    "request": "GetMap",
+    "layers": "ipcc:ipcc-synthetic-vulnerability-climate-2005-2050-2100",
+    "format": "image/png",
+    "crs": "EPSG:4326",
+    "style": "ipcc-synthetic-vulnerability-climate-2005-2050-2100:extreme-events-enhance-adaptive-a2550-2100-5.5C-annual",
+    "width": 1500,
+    "height": 800,
+    "bbox": f'{bbox.get("LU-Lat")},{bbox.get("LU-Lon")},{bbox.get("RO-Lat")},{bbox.get("RO-Lon")}',
+}
+
+urlWMSurllib = "https://sedac.ciesin.columbia.edu/geoserver/ows?" + unquote(
+    urlencode(WMSurllibSettings)
+)
+urlDynamicWMS = f'{WMSSettings["BASEURL"]}SERVICE={WMSSettings["SERVICE"]}&REQUEST={WMSSettings["REQUEST"]}&VERSION={WMSSettings["VERSION"]}&LAYERS={WMSSettings["LAYERS"]}&FORMAT={WMSSettings["FORMAT"]}&CRS={WMSSettings["CRS"]}&STYLE={WMSSettings["STYLE"]}&WIDTH={WMSSettings["WIDTH"]}&HEIGHT={WMSSettings["HEIGHT"]}&BBOX={WMSSettings["BBOX"]["LU-Lat"]},{WMSSettings["BBOX"]["LU-Lon"]},{WMSSettings["BBOX"]["RO-Lat"]},{WMSSettings["BBOX"]["RO-Lon"]}'
 urlWithParams = "crs=EPSG:4326&format=image/png&layers=continents&styles&url=https://demo.mapserver.org/cgi-bin/wms"
 
 # load layer
