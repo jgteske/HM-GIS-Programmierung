@@ -24,6 +24,7 @@ Vorkenntnisse in Python sind nicht nötig. Grundkenntnisse in QGIS sind aber hil
 
 ## Interessante Links
 https://www.qgis.org/pyqgis/3.0/
+https://docs.qgis.org/3.28/en/docs/pyqgis_developer_cookbook/index.html
 https://courses.spatialthoughts.com/pyqgis-in-a-day.html
 
 ---
