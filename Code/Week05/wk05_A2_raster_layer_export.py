@@ -26,8 +26,8 @@ print("Quickexport Speicherort: " + quickExportFile)
 #
 # Create Layout
 #
+layoutName = "PrintLayout"
 project = QgsProject.instance()
-
 manager = project.layoutManager()
 
 # recreate PrintLayout
@@ -38,7 +38,6 @@ for layout in layouts_list:
         manager.removeLayout(layout)
 
 layout = QgsPrintLayout(project)
-layoutName = "PrintLayout"
 #initializes default settings for blank print layout canvas
 layout.initializeDefaults()
 layout.setName(layoutName)
