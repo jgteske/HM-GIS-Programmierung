@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<gpx
+  version="1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.topografix.com/GPX/1/0"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+  <time>2018-03-28T19:18:23Z</time>
+  <bounds minlat="30.056946" minlon="-117.164207" maxlat="32.792397" maxlon="-115.721031"/>
+<trk>
+<name>ride</name>
+<trkseg>
+<trkpt lat="30.107822" lon="-115.745255">
+ <ele>196.388</ele>
+ <time>2009-10-13T23:34:05Z</time>
+</trkpt>
+<trkpt lat="30.105623" lon="-115.743614">
+ <ele>222.327</ele>
+ <time>2009-10-13T23:34:15Z</time>
+</trkpt>
+<trkpt lat="30.104803" lon="-115.741638">
+ <ele>238.338</ele>
+ <time>2009-10-13T23:34:26Z</time>
+</trkpt>
+<trkpt lat="30.103033" lon="-115.740662">
+ <ele>255.516</ele>
+ <time>2009-10-13T23:34:36Z</time>
+</trkpt>
+<trkpt lat="30.099842" lon="-115.739799">
+ <ele>257.385</ele>
+ <time>2009-10-13T23:34:50Z</time>
+</trkpt>
+<trkpt lat="30.098383" lon="-115.739273">
+ <ele>258.902</ele>
+ <time>2009-10-13T23:35:02Z</time>
+</trkpt>
+<trkpt lat="30.098" lon="-115.739082">
+ <ele>257.816</ele>
+ <time>2009-10-13T23:35:16Z</time>
+</trkpt>
+<trkpt lat="30.097965" lon="-115.739059">
+ <ele>258.159</ele>
+ <time>2009-10-13T23:35:26Z</time>
+</trkpt>
+<trkpt lat="30.097912" lon="-115.739037">
+ <ele>258.017</ele>
+ <time>2009-10-13T23:35:44Z</time>
+</trkpt>
+<trkpt lat="30.096786" lon="-115.738464">
+ <ele>259.53</ele>
+ <time>2009-10-13T23:36:00Z</time>
+</trkpt>
+<trkpt lat="30.095053" lon="-115.737595">
+ <ele>262.064</ele>
+ <time>2009-10-13T23:36:14Z</time>
+</trkpt>
+<trkpt lat="30.093351" lon="-115.736732">
+ <ele>264.077</ele>
+ <time>2009-10-13T23:36:25Z</time>
+</trkpt>
+<trkpt lat="30.091246" lon="-115.735672">
+ <ele>266.379</ele>
+ <time>2009-10-13T23:36:38Z</time>
+</trkpt>
+<trkpt lat="30.088795" lon="-115.734444">
+ <ele>266.225</ele>
+ <time>2009-10-13T23:36:53Z</time>
+</trkpt>
+<trkpt lat="30.087353" lon="-115.733932">
+ <ele>265.813</ele>
+ <time>2009-10-13T23:37:03Z</time>
+</trkpt>
+<trkpt lat="30.085543" lon="-115.734436">
+ <ele>253.102</ele>
+ <time>2009-10-13T23:37:14Z</time>
+</trkpt>
+<trkpt lat="30.08461" lon="-115.736015">
+ <ele>229.016</ele>
+ <time>2009-10-13T23:37:26Z</time>
+</trkpt>
+<trkpt lat="30.083778" lon="-115.737267">
+ <ele>211.006</ele>
+ <time>2009-10-13T23:37:36Z</time>
+</trkpt>
+<trkpt lat="30.08182" lon="-115.737572">
+ <ele>199.734</ele>
+ <time>2009-10-13T23:37:46Z</time>
+</trkpt>
+<trkpt lat="30.079948" lon="-115.738213">
+ <ele>185.546</ele>
+ <time>2009-10-13T23:37:56Z</time>
+</trkpt>
+<trkpt lat="30.077318" lon="-115.737991">
+ <ele>169.599</ele>
+ <time>2009-10-13T23:38:07Z</time>
+</trkpt>
+<trkpt lat="30.075092" lon="-115.736313">
+ <ele>157.162</ele>
+ <time>2009-10-13T23:38:18Z</time>
+</trkpt>
+<trkpt lat="30.072714" lon="-115.734932">
+ <ele>140.859</ele>
+ <time>2009-10-13T23:38:30Z</time>
+</trkpt>
+<trkpt lat="30.071974" lon="-115.733086">
+ <ele>136.35</ele>
+ <time>2009-10-13T23:38:40Z</time>
+</trkpt>
+<trkpt lat="30.070875" lon="-115.731812">
+ <ele>128.258</ele>
+ <time>2009-10-13T23:38:51Z</time>
+</trkpt>
+<trkpt lat="30.068968" lon="-115.731888">
+ <ele>109.519</ele>
+ <time>2009-10-13T23:39:01Z</time>
+</trkpt>
+<trkpt lat="30.066677" lon="-115.731445">
+ <ele>89.845</ele>
+ <time>2009-10-13T23:39:12Z</time>
+</trkpt>
+<trkpt lat="30.064569" lon="-115.729767">
+ <ele>77.782</ele>
+ <time>2009-10-13T23:39:24Z</time>
+</trkpt>
+<trkpt lat="30.062855" lon="-115.728516">
+ <ele>63.37</ele>
+ <time>2009-10-13T23:39:36Z</time>
+</trkpt>
+<trkpt lat="30.061546" lon="-115.727295">
+ <ele>58.364</ele>
+ <time>2009-10-13T23:39:46Z</time>
+</trkpt>
+<trkpt lat="30.060085" lon="-115.726189">
+ <ele>48.555</ele>
+ <time>2009-10-13T23:39:58Z</time>
+</trkpt>
+<trkpt lat="30.060146" lon="-115.725838">
+ <ele>46.05</ele>
+ <time>2009-10-13T23:40:09Z</time>
+</trkpt>
+<trkpt lat="30.060076" lon="-115.725853">
+ <ele>45.431</ele>
+ <time>2009-10-13T23:40:20Z</time>
+</trkpt>
+<trkpt lat="30.06016" lon="-115.725807">
+ <ele>44.767</ele>
+ <time>2009-10-13T23:40:45Z</time>
+</trkpt>
+<trkpt lat="30.060097" lon="-115.725731">
+ <ele>43.933</ele>
+ <time>2009-10-13T23:41:11Z</time>
+</trkpt>
+<trkpt lat="30.06007" lon="-115.725731">
+ <ele>43.388</ele>
+ <time>2009-10-13T23:41:31Z</time>
+</trkpt>
+</trkseg>
+</trk>
+</gpx>
