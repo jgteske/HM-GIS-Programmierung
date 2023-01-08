@@ -29,11 +29,11 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="Schritt1">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>80</y>
+     <y>90</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -42,11 +42,11 @@
     <string>Schritt 1</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="Schritt2">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>130</y>
+     <y>140</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -55,11 +55,11 @@
     <string>Schritt 2</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="Schritt3">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>180</y>
+     <y>190</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -68,11 +68,11 @@
     <string>Schritt 3</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="Schritt4">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>230</y>
+     <y>240</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -81,11 +81,11 @@
     <string>Schritt 4</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="Schritt5">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>280</y>
+     <y>290</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -94,11 +94,11 @@
     <string>Schritt 5</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_6">
+  <widget class="QPushButton" name="Schritt6">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>330</y>
+     <y>340</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -107,69 +107,336 @@
     <string>Schritt 6</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>80</y>
-     <width>531</width>
-     <height>491</height>
+     <x>150</x>
+     <y>90</y>
+     <width>571</width>
+     <height>521</height>
     </rect>
    </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+   <property name="currentIndex">
+    <number>1</number>
    </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>431</width>
-      <height>24</height>
-     </rect>
-    </property>
+   <widget class="QWidget" name="Schritt_Willkommen">
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>231</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Einleitender Beschreibungstext zum Plugin</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QToolButton" name="toolButton">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>120</y>
-      <width>23</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>...</string>
-    </property>
+   <widget class="QWidget" name="Schritt1_Widget">
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>191</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bitte Arbeitsverzeichnis auswählen:</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>90</y>
+       <width>23</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>431</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>150</y>
+       <width>211</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Arbeitsverzeichnis bestätigen</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>160</y>
-      <width>211</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Arbeitsverzeichnis bestätigen</string>
-    </property>
+   <widget class="QWidget" name="Schritt2_Widget">
+    <widget class="QPushButton" name="pushButton_8">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>40</y>
+       <width>301</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Festlegen der Grenzen des Interessengebietes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_15">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>90</y>
+       <width>231</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bestätigen der heruntergeladenen JSON</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>90</y>
-      <width>201</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Bitte Arbeitsverzeichnis auswählen:</string>
-    </property>
+   <widget class="QWidget" name="Schritt3_Widget">
+    <widget class="QDateEdit" name="dateEdit">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bestätige Datum</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>78</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>VIIRS DNP</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>160</y>
+       <width>78</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Sentinel 1</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>240</y>
+       <width>78</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Sentinel 2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_10">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>360</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Download Data</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>261</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Beide Satelliten</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>270</y>
+       <width>261</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>S2A</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Schritt4_Widget">
+    <widget class="QPushButton" name="pushButton_11">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Modifizieren der Sentinal-1 Daten</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_12">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Modifizieren der Sentinal-2 Daten</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_3">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>100</y>
+       <width>261</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>False-Color Image</string>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Schritt5_Widget">
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bearbeiten VIRRS-Daten</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_16">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>140</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bearbeiten Sentinal-1-Daten</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_17">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>180</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bearbeiten Sentinal-2-Daten</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Schritt6_Widget">
+    <widget class="QPushButton" name="pushButton_14">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>260</y>
+       <width>211</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Weitere Daten herunterladen</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>140</y>
+       <width>211</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Vielen Dank fürs nutzen des Plugins</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
