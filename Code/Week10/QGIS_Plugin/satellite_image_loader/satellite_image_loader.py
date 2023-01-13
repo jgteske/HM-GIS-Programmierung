@@ -213,12 +213,12 @@ class SatelliteImageLoader:
         self.dlg.Schritt4.setEnabled(False)
         self.dlg.Schritt5.setEnabled(False)
         self.dlg.Schritt6.setEnabled(False)
-        self.dlg.comboBox.setEnabled(False)
-        self.dlg.comboBox_2.setEnabled(False)
-        self.dlg.pushButton_11.setEnabled(False)
-        self.dlg.pushButton_12.setEnabled(False)
-        self.dlg.pushButton_13.setEnabled(False)
-        self.dlg.pushButton_15.setEnabled(False)
+        self.dlg.modifySentinel1.setEnabled(False)
+        self.dlg.modifySentinel2.setEnabled(False)
+        self.dlg.editVIIRS.setEnabled(False)
+        self.dlg.editSentinel1.setEnabled(False)
+        self.dlg.editSentinel2.setEnabled(False)
+        self.dlg.acceptJSON.setEnabled(False)
         self.dlg.Schritt1.clicked.connect(self.Seite1)
         self.dlg.Schritt2.setStyleSheet("background-color: red")
         self.dlg.Schritt3.setStyleSheet("background-color: red")
@@ -235,27 +235,27 @@ class SatelliteImageLoader:
         # self.dlg.help_merge_VIIRS.setHidden(True)
         # self.dlg.help_merge_Sent1.setHidden(True)
         # self.dlg.help_merge_Sent2.setHidden(True)
-        # self.dlg.Button_Pfad.clicked.connect(self.select_Workfolder)
-        # self.dlg.Best_Button_Pfad.clicked.connect(self.Best_Button1)
+        self.dlg.openWorkDir.clicked.connect(self.select_Workfolder)
+        self.dlg.acceptWorkDir.clicked.connect(self.Best_Button1)
         self.dlg.Schritt2.clicked.connect(self.Seite2)
-        self.dlg.pushButton_8.clicked.connect(self.GeoJSON)
-        self.dlg.pushButton_15.clicked.connect(self.MoveGeoJSON)
+        self.dlg.selectJSON.clicked.connect(self.GeoJSON)
+        self.dlg.acceptJSON.clicked.connect(self.MoveGeoJSON)
         self.dlg.Schritt3.clicked.connect(self.Seite3)
-        # self.dlg.Best_Datum.clicked.connect(self.Datum)
-        # self.dlg.checkBox_VIIRS.setEnabled(False)
-        # self.dlg.checkBox_Sentinel1.setEnabled(False)
-        # self.dlg.checkBox_Sentinel2.setEnabled(False)
-        self.dlg.pushButton_10.setEnabled(False)
-        self.dlg.pushButton_10.clicked.connect(self.pushButton_10ing)
+        self.dlg.acceptDate.clicked.connect(self.Datum)
+        self.dlg.selectVIRRS.setEnabled(False)
+        self.dlg.selectSentinel1.setEnabled(False)
+        self.dlg.selectSenintel2.setEnabled(False)
+        self.dlg.startDownload.setEnabled(False)
+        self.dlg.startDownload.clicked.connect(self.downloadData)
         self.dlg.Schritt4.clicked.connect(self.Seite4)
-        # self.dlg.comboBox.clicked.connect(self.GeocodeSentinel1)
-        # self.dlg.comboBox_2.clicked.connect(self.GeocodeSentinel2)
+        self.dlg.modifySentinel1.clicked.connect(self.GeocodeSentinel1)
+        self.dlg.modifySentinel2.clicked.connect(self.GeocodeSentinel2)
         self.dlg.Schritt5.clicked.connect(self.Seite5)
-        self.dlg.pushButton_11.clicked.connect(self.ClipVIIRS)
-        self.dlg.pushButton_12.clicked.connect(self.Merge_Clip_Sentinel1)
-        self.dlg.pushButton_13.clicked.connect(self.Merge_Clip_Sentinel2)
+        self.dlg.editVIIRS.clicked.connect(self.ClipVIIRS)
+        self.dlg.editSentinel1.clicked.connect(self.Merge_Clip_Sentinel1)
+        self.dlg.editSentinel2.clicked.connect(self.Merge_Clip_Sentinel2)
         self.dlg.Schritt6.clicked.connect(self.Seite6)
-        self.dlg.pushButton_14.clicked.connect(self.ReturnSeite3)
+        self.dlg.backToDownload.clicked.connect(self.ReturnSeite3)
         # show the dialog
         self.dlg.show()
         # Run the dialog event loop
@@ -273,16 +273,16 @@ class SatelliteImageLoader:
 
     # Erstellen des Arbeitsverzeichnises
     def select_Workfolder(self):
-        self.dlg.Button_Pfad.setEnabled(False)
+        self.dlg.openWorkDir.setEnabled(False)
         dir = QtWidgets.QFileDialog.getExistingDirectory(None, "Select a folder:")
-        self.dlg.Pfad.setText(dir)
+        self.dlg.workDir.setText(dir)
         self.Workpath = dir
         if not os.path.exists(self.Workpath):
             os.mkdir(self.Workpath)
         if not os.path.exists("" + self.Workpath + r"/Geojson"):
             os.mkdir("" + self.Workpath + r"/Geojson")
-        if not os.path.exists("" + self.Workpath + r"/pushButton_10files"):
-            os.mkdir("" + self.Workpath + r"/pushButton_10files")
+        if not os.path.exists("" + self.Workpath + r"/Downloadfiles"):
+            os.mkdir("" + self.Workpath + r"/Downloadfiles")
         if not os.path.exists("" + self.Workpath + r"/EditTiles"):
             os.mkdir("" + self.Workpath + r"/EditTiles")
         if not os.path.exists("" + self.Workpath + r"/GeoTIFFs"):
@@ -290,8 +290,10 @@ class SatelliteImageLoader:
 
     # Freischalten und Überprüfen des nächsten Schritts
     def Best_Button1(self):
-        # Code ergänzen
-        return
+        if os.path.exists(self.Workpath):
+            os.chdir(self.Workpath)
+            # self.dlg.stackedWidget.setCurrentWidget(self.dlg.Schritt2_Widget)
+            self.Seite2()
 
     # Öffnen der zweite Seite und überprüfen ob ein geoJSON-File bereits existiert
     def Seite2(self):
@@ -301,12 +303,12 @@ class SatelliteImageLoader:
     # Öffnen der Webseite zum Erstellen des geoJSON-Files
     def GeoJSON(self):
         webbrowser.open(r"https://geojson.io")
-        self.dlg.pushButton_8.setEnabled(False)
-        self.dlg.pushButton_15.setEnabled(True)
+        self.dlg.selectJSON.setEnabled(False)
+        self.dlg.acceptJSON.setEnabled(True)
 
     # Verschieben des GeoJSON in das Arbeitsverzeichnis und Benenne es um
     def MoveGeoJSON(self):
-        self.dlg.pushButton_15.setEnabled(False)
+        self.dlg.acceptJSON.setEnabled(False)
         for dirpath, dirnames, filenames in os.walk(r"c:\\"):
             for filename in filenames:
                 if filename.endswith("map.geojson"):
@@ -335,7 +337,7 @@ class SatelliteImageLoader:
             )
         else:
             self.dlg.Datumsauswahl.setEnabled(False)
-            self.dlg.Best_Datum.setEnabled(False)
+            self.dlg.acceptDate.setEnabled(False)
             self.jahr = self.dlg.Datumsauswahl.date().toString("yyyy")
             self.monat = self.dlg.Datumsauswahl.date().toString("MM")
             self.tag = self.dlg.Datumsauswahl.date().toString("dd")
@@ -343,7 +345,7 @@ class SatelliteImageLoader:
             if not os.path.exists(
                 ""
                 + self.Workpath
-                + r"/pushButton_10files/"
+                + r"/Downloadfiles/"
                 + self.jahr
                 + self.monat
                 + self.tag
@@ -351,7 +353,7 @@ class SatelliteImageLoader:
                 os.mkdir(
                     ""
                     + self.Workpath
-                    + r"/pushButton_10files/"
+                    + r"/Downloadfiles/"
                     + self.jahr
                     + self.monat
                     + self.tag
@@ -372,18 +374,18 @@ class SatelliteImageLoader:
                         + self.monat
                         + self.tag
                     )
-                self.dlg.checkBox_VIIRS.setEnabled(True)
-                self.dlg.checkBox_Sentinel1.setEnabled(True)
-                self.dlg.checkBox_Sentinel2.setEnabled(True)
-                self.dlg.pushButton_10.setEnabled(True)
+                self.dlg.selectVIRRS.setEnabled(True)
+                self.dlg.selectSentinel1.setEnabled(True)
+                self.dlg.selectSenintel2.setEnabled(True)
+                self.dlg.startDownload.setEnabled(True)
             else:
                 self.dlg.lbl_day.setText("Datum wurde bereits runtergeladen")
                 self.dlg.Datumsauswahl.setEnabled(True)
-                self.dlg.Best_Datum.setEnabled(True)
+                self.dlg.acceptDate.setEnabled(True)
 
     # Herunterladen der Daten zum ausgewählten Datum
-    def pushButton_10ing(self):
-        self.dlg.pushButton_10.setEnabled(False)
+    def downloadData(self):
+        self.dlg.startDownload.setEnabled(False)
         if not os.path.exists(
             "" + self.Workpath + r"/EditTiles/" + self.jahr + self.monat + self.tag
         ):
@@ -397,25 +399,25 @@ class SatelliteImageLoader:
                 + ""
             )
         if (
-            not self.dlg.checkBox_VIIRS.isChecked()
-            or self.dlg.checkBox_Sentinel1.isChecked()
-            or self.dlg.checkBox_Sentinel2.isChecked()
+            not self.dlg.selectVIRRS.isChecked()
+            or self.dlg.selectSentinel1.isChecked()
+            or self.dlg.selectSenintel2.isChecked()
         ):
             self.dlg.lbl_day.setText("Keine Satelliten-Missionen ausgewählt")
-            self.dlg.pushButton_10.setEnabled(True)
+            self.dlg.startDownload.setEnabled(True)
         if (
-            self.dlg.checkBox_VIIRS.isChecked()
-            or self.dlg.checkBox_Sentinel1.isChecked()
-            or self.dlg.checkBox_Sentinel2.isChecked()
+            self.dlg.selectVIRRS.isChecked()
+            or self.dlg.selectSentinel1.isChecked()
+            or self.dlg.selectSenintel2.isChecked()
         ):
             self.dlg.lbl_day.setText("")
-            # pushButton_10 der VIIRS Daten
+            # startDownload der VIIRS Daten
             # Basis: https://payneinstitute.mines.edu/eog-2/transition-to-secured-data-access/
-            if self.dlg.checkBox_VIIRS.isChecked():
+            if self.dlg.selectVIRRS.isChecked():
                 if not os.path.exists(
                     ""
                     + self.Workpath
-                    + r"/pushButton_10files/"
+                    + r"/Downloadfiles/"
                     + self.jahr
                     + self.monat
                     + self.tag
@@ -424,7 +426,7 @@ class SatelliteImageLoader:
                     os.mkdir(
                         ""
                         + self.Workpath
-                        + r"/pushButton_10files/"
+                        + r"/Downloadfiles/"
                         + self.jahr
                         + self.monat
                         + self.tag
@@ -459,7 +461,7 @@ class SatelliteImageLoader:
                         (
                             ""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
@@ -476,7 +478,7 @@ class SatelliteImageLoader:
                     if os.path.isfile(
                         ""
                         + self.Workpath
-                        + r"/pushButton_10files/"
+                        + r"/Downloadfiles/"
                         + self.jahr
                         + self.monat
                         + self.tag
@@ -491,12 +493,12 @@ class SatelliteImageLoader:
                     self.dlg.lbl_dl_VIIRS.setText(
                         "VIIRS-Daten für Datum bereits heruntergeladen"
                     )
-            # pushButton_10 von Sentinel-1 Daten
-            if self.dlg.checkBox_Sentinel1.isChecked():
+            # startDownload von Sentinel-1 Daten
+            if self.dlg.selectSentinel1.isChecked():
                 os.mkdir(
                     ""
                     + self.Workpath
-                    + r"/pushButton_10files/"
+                    + r"/Downloadfiles/"
                     + self.jahr
                     + self.monat
                     + self.tag
@@ -623,7 +625,7 @@ class SatelliteImageLoader:
                             item,
                             directory_path=""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
@@ -653,7 +655,7 @@ class SatelliteImageLoader:
                             item,
                             directory_path=""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
@@ -682,18 +684,18 @@ class SatelliteImageLoader:
                             item,
                             directory_path=""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
                             + r"/Sentinel1",
                         )
 
-                # Bestätigung pushButton_10
+                # Bestätigung startDownload
                 if os.path.isdir(
                     ""
                     + self.Workpath
-                    + r"/pushButton_10files/"
+                    + r"/Downloadfiles/"
                     + self.jahr
                     + self.monat
                     + self.tag
@@ -701,12 +703,12 @@ class SatelliteImageLoader:
                 ):
                     self.dlg.lbl_dl_Sent1.setText("Sentinel-1 heruntergeladen")
 
-            # pushButton_10 von Sentinel-2 Daten und entpacken
-            if self.dlg.checkBox_Sentinel2.isChecked():
+            # startDownload von Sentinel-2 Daten und entpacken
+            if self.dlg.selectSenintel2.isChecked():
                 if not os.path.exists(
                     ""
                     + self.Workpath
-                    + r"/pushButton_10files/"
+                    + r"/Downloadfiles/"
                     + self.jahr
                     + self.monat
                     + self.tag
@@ -715,7 +717,7 @@ class SatelliteImageLoader:
                     os.mkdir(
                         ""
                         + self.Workpath
-                        + r"/pushButton_10files/"
+                        + r"/Downloadfiles/"
                         + self.jahr
                         + self.monat
                         + self.tag
@@ -837,7 +839,7 @@ class SatelliteImageLoader:
                             item,
                             directory_path=""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
@@ -865,7 +867,7 @@ class SatelliteImageLoader:
                             item,
                             directory_path=""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
@@ -904,7 +906,7 @@ class SatelliteImageLoader:
                 path_Sent2 = (
                     ""
                     + self.Workpath
-                    + r"/pushButton_10files/"
+                    + r"/Downloadfiles/"
                     + self.jahr
                     + self.monat
                     + self.tag
@@ -922,7 +924,7 @@ class SatelliteImageLoader:
                         (
                             ""
                             + self.Workpath
-                            + r"/pushButton_10files/"
+                            + r"/Downloadfiles/"
                             + self.jahr
                             + self.monat
                             + self.tag
@@ -939,7 +941,7 @@ class SatelliteImageLoader:
                             (
                                 ""
                                 + self.Workpath
-                                + r"/pushButton_10files/"
+                                + r"/Downloadfiles/"
                                 + self.jahr
                                 + self.monat
                                 + self.tag
@@ -953,7 +955,7 @@ class SatelliteImageLoader:
     # Code ergänzen
     # Ein Band auslesen und einer Liste hinzufügen und das Band in einer Datei speichern
     # for name in sorted(glob.glob(
-    #      ("" + self.Workpath + r"/pushButton_10files/" + self.jahr + self.monat + self.tag + r"/Sentinel2/*/*/*/*/*/*B02_10m.jp2"))):
+    #      ("" + self.Workpath + r"/Downloadfiles/" + self.jahr + self.monat + self.tag + r"/Sentinel2/*/*/*/*/*/*B02_10m.jp2"))):
     #      TilelistB.append(name)
     # shutil.copyfile(TileBlue1, ("" + self.Workpath + r"/EditTiles/" + self.jahr + self.monat + self.tag + "/Sentinel2/SingleTiles/BlueCTile1.jp2"))
     # Dieses Auslesen für die vier Bänder Blau Grün Rot NIR und bis zu vier Tiles
@@ -965,7 +967,7 @@ class SatelliteImageLoader:
 
     # Geocoden der Sentinel1 Daten
     def GeocodeSentinel1(self):
-        self.dlg.comboBox.setEnabled(False)
+        self.dlg.modifySentinel1.setEnabled(False)
         if not os.path.exists(
             ""
             + self.Workpath
@@ -1006,7 +1008,7 @@ class SatelliteImageLoader:
         pathSent1 = (
             ""
             + self.Workpath
-            + r"/pushButton_10files/"
+            + r"/Downloadfiles/"
             + self.jahr
             + self.monat
             + self.tag
@@ -1022,7 +1024,7 @@ class SatelliteImageLoader:
             glob.glob(
                 ""
                 + self.Workpath
-                + r"/pushButton_10files/"
+                + r"/Downloadfiles/"
                 + self.jahr
                 + self.monat
                 + self.tag
@@ -1065,7 +1067,7 @@ class SatelliteImageLoader:
 
     # Erstellen des Multikanal-Bildes und Transformation in WGS84
     def GeocodeSentinel2(self):
-        self.dlg.comboBox_2.setEnabled(False)
+        self.dlg.modifySentinel2.setEnabled(False)
         if not os.path.exists(
             ""
             + self.Workpath
@@ -1335,7 +1337,7 @@ class SatelliteImageLoader:
 
     # Zuschneiden der VIIRS-Daten
     def ClipVIIRS(self):
-        self.dlg.pushButton_11.setEnabled(False)
+        self.dlg.editVIIRS.setEnabled(False)
         if not os.path.exists(
             ""
             + self.Workpath
@@ -1370,7 +1372,7 @@ class SatelliteImageLoader:
         VIIRS_Data = (
             ""
             + self.Workpath
-            + r"/pushButton_10files/"
+            + r"/Downloadfiles/"
             + self.jahr
             + self.monat
             + self.tag
@@ -1396,7 +1398,7 @@ class SatelliteImageLoader:
 
     # Mergen und Clippen der Sentinel1-Daten
     def Merge_Clip_Sentinel1(self):
-        self.dlg.pushButton_12.setEnabled(False)
+        self.dlg.editSentinel1.setEnabled(False)
         # mergen
         if not os.path.exists(
             ""
@@ -1571,7 +1573,7 @@ class SatelliteImageLoader:
 
     # Mergen und Clippen der Sentinel-2 Daten
     def Merge_Clip_Sentinel2(self):
-        self.dlg.pushButton_13.setEnabled(False)
+        self.dlg.editSentinel2.setEnabled(False)
         # mergen
         if not os.path.exists(
             ""
@@ -1673,7 +1675,7 @@ class SatelliteImageLoader:
         self.dlg.stackedWidget.setCurrentWidget(self.dlg.Schritt6_Widget)
         self.dlg.Schritt6.setEnabled(False)
 
-    # Sprung auf Seite drei zum neuen pushButton_10 von Daten
+    # Sprung auf Seite drei zum neuen startDownload von Daten
     def ReturnSeite3(self):
         self.dlg.stackedWidget.setCurrentWidget(self.dlg.Schritt3_Widget)
         self.dlg.Schritt3.setEnabled(False)
