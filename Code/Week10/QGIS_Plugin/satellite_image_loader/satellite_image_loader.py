@@ -225,11 +225,11 @@ class SatelliteImageLoader:
         self.dlg.Schritt4.setStyleSheet("background-color: red")
         self.dlg.Schritt5.setStyleSheet("background-color: red")
         self.dlg.Schritt6.setStyleSheet("background-color: red")
-        # self.dlg.Schritt1_check.setHidden(True)
-        # self.dlg.Schritt2_check.setHidden(True)
-        # self.dlg.Schritt3_check.setHidden(True)
-        # self.dlg.Schritt4_check.setHidden(True)
-        # self.dlg.Schritt5_check.setHidden(True)
+        self.dlg.Schritt1_check.setHidden(True)
+        self.dlg.Schritt2_check.setHidden(True)
+        self.dlg.Schritt3_check.setHidden(True)
+        self.dlg.Schritt4_check.setHidden(True)
+        self.dlg.Schritt5_check.setHidden(True)
         # self.dlg.Helper_Sent2.setHidden(True)
         # self.dlg.Helper_Sent1.setHidden(True)
         # self.dlg.help_merge_VIIRS.setHidden(True)
@@ -331,16 +331,16 @@ class SatelliteImageLoader:
 
     # Festlegen des Datums
     def Datum(self):
-        if self.dlg.Datumsauswahl.date() >= date.today():
+        if self.dlg.selectDate.date() >= date.today():
             self.dlg.lbl_day.setText(
                 "Daten für das gewählte Datum sind noch nicht verfügbar!"
             )
         else:
-            self.dlg.Datumsauswahl.setEnabled(False)
+            self.dlg.selectDate.setEnabled(False)
             self.dlg.acceptDate.setEnabled(False)
-            self.jahr = self.dlg.Datumsauswahl.date().toString("yyyy")
-            self.monat = self.dlg.Datumsauswahl.date().toString("MM")
-            self.tag = self.dlg.Datumsauswahl.date().toString("dd")
+            self.jahr = self.dlg.selectDate.date().toString("yyyy")
+            self.monat = self.dlg.selectDate.date().toString("MM")
+            self.tag = self.dlg.selectDate.date().toString("dd")
             self.dlg.lbl_day.setText("")
             if not os.path.exists(
                 ""
@@ -380,7 +380,7 @@ class SatelliteImageLoader:
                 self.dlg.startDownload.setEnabled(True)
             else:
                 self.dlg.lbl_day.setText("Datum wurde bereits runtergeladen")
-                self.dlg.Datumsauswahl.setEnabled(True)
+                self.dlg.selectDate.setEnabled(True)
                 self.dlg.acceptDate.setEnabled(True)
 
     # Herunterladen der Daten zum ausgewählten Datum
@@ -506,7 +506,7 @@ class SatelliteImageLoader:
                 )
                 sys.stderr = open("err.txt", "w")
                 sys.stdout = open("err.txt", "w")
-                if self.dlg.Sent1_Sat.currentText() == "Beide Satelliten":
+                if self.dlg.selectSentinel1Options.currentText() == "Beide Satelliten":
                     Abstand_Sent1 = 2
                 else:
                     Abstand_Sent1 = 3
@@ -603,7 +603,7 @@ class SatelliteImageLoader:
                     )
 
                 # Nur Satellitenbilder von Sentinel-1A Satelliten
-                if self.dlg.Sent1_Sat.currentText() == "S1A":
+                if self.dlg.selectSentinel1Options.currentText() == "S1A":
                     api = SentinelAPI("downloadtool.sat.data", "Satellitenbilder")
                     # search by polygon, time, and Hub query keywords
                     footprint = geojson_to_wkt(
@@ -633,7 +633,7 @@ class SatelliteImageLoader:
                         )
 
                 # Nur Satellitenbilder von Sentinel-1B Satelliten
-                if self.dlg.Sent1_Sat.currentText() == "S1B":
+                if self.dlg.selectSentinel1Options.currentText() == "S1B":
                     api = SentinelAPI("downloadtool.sat.data", "Satellitenbilder")
                     # search by polygon, time, and Hub query keywords
                     footprint = geojson_to_wkt(
@@ -663,7 +663,7 @@ class SatelliteImageLoader:
                         )
 
                 # Beide Satelelliten
-                if self.dlg.Sent1_Sat.currentText() == "Beide Satelliten":
+                if self.dlg.selectSentinel1Options.currentText() == "Beide Satelliten":
                     api = SentinelAPI("downloadtool.sat.data", "Satellitenbilder")
                     # search by polygon, time, and Hub query keywords
                     footprint = geojson_to_wkt(
@@ -817,7 +817,7 @@ class SatelliteImageLoader:
                         + str(Endday_Sent2)
                         + ""
                     )
-                if self.dlg.Sent2_Sat.currentText() == "S2A":
+                if self.dlg.selectSentinel2Options.currentText() == "S2A":
                     api = SentinelAPI("downloadtool.sat.data", "Satellitenbilder")
                     # search by polygon, time, and Hub query keywords
                     footprint = geojson_to_wkt(
@@ -845,7 +845,7 @@ class SatelliteImageLoader:
                             + self.tag
                             + r"/Sentinel2",
                         )
-                if self.dlg.Sent2_Sat.currentText() == "S2B":
+                if self.dlg.selectSentinel2Options.currentText() == "S2B":
                     api = SentinelAPI("downloadtool.sat.data", "Satellitenbilder")
                     # search by polygon, time, and Hub query keywords
                     footprint = geojson_to_wkt(
